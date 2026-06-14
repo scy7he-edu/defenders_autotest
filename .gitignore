@@ -1,0 +1,6 @@
+.env
+/allure-results
+/__pycache__
+/pages/__pycache__
+/tests/__pycache__
+/.pytest_cache
