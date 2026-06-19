@@ -1,11 +1,15 @@
+from faker import Faker
 from playwright.sync_api import Page, expect
+
+fake = Faker()
+
 
 class BasePage:
     def __init__(self, page: Page):
         self.page = page
 
     def open_url(self, url: str):
-        self.page.goto(url, wait_until='domcontentloaded')
+        self.page.goto(url, wait_until="domcontentloaded")
 
     def fill_field(self, selector: str, value: str):
         locator = self.page.locator(selector)
@@ -16,3 +20,11 @@ class BasePage:
     def check_element(self, element):
         expect(element).to_be_visible()
         expect(element).to_be_enabled()
+
+    @staticmethod
+    def email_generator():
+        return f"{fake.user_name()}@gmail.com"
+
+    @staticmethod
+    def password_generator():
+        return fake.password()

@@ -1,9 +1,11 @@
-from playwright.sync_api import Page
-from pages.sign_up_page import SignUpPage
 import allure
+from playwright.sync_api import Page
 
-@allure.feature('Регистрация')
-@allure.story('Успешное создание аккаунта')
+from pages.sign_up_page import SignUpPage
+
+
+@allure.feature("Регистрация")
+@allure.story("Успешное создание аккаунта")
 def test_sign_up(page: Page):
     sign_up_page = SignUpPage(page)
     sign_up_page.open_page()
