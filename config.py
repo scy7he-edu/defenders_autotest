@@ -13,15 +13,17 @@ class UserCredentials:
 
     def check_password(self):
         current_test = os.environ.get("PYTEST_CURRENT_TEST", "")
-        if "test_sign_up.py" not in current_test:
-            if not os.getenv("PASSWORD"):
+        if "test_sign_up" not in current_test:
+            pwd = os.getenv("PASSWORD")
+            if not pwd or "here" in pwd:
                 raise ValueError("Fill password in .env file!")
 
     @property
     def EMAIL(self):
         self.check_password()
-        if os.getenv("EMAIL"):
-            return os.getenv("EMAIL")
+        email = os.getenv("EMAIL")
+        if email and "@" in email and "here" not in email:
+            return email
         if not self.email:
             self.email = BasePage.email_generator()
         return self.email

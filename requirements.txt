@@ -3,3 +3,4 @@ playwright>=1.40.0
 pytest-playwright>=0.4.0
 python-dotenv>=1.0.0
 allure-pytest>=2.13.0
+faker>=18.0.0

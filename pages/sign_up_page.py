@@ -29,3 +29,10 @@ class SignUpPage(BasePage):
             self.page.locator(config.PageElements.LOG_IN_BUTTON_LOCATOR)
         )
         self.check_element(sign_in_button)
+
+    @allure.step("Проверка уведомления о существовании аккаунта с указанным email")
+    def check_existing_email_notification(self):
+        notification = self.page.locator(
+            f"text={config.PageElements.EXISTING_EMAIL_NOTIFICATION}"
+        )
+        self.check_element(notification)
