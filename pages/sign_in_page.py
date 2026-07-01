@@ -22,9 +22,9 @@ class SignInPage(BasePage):
     @allure.step('Нажатие кнопки "Войти"')
     def proceed_sign_in(self):
         sign_in_button = (
-            self.page.get_by_role("button", name="Войти")
-            .and_(self.page.locator(".btn-primary"))
-            .and_(self.page.locator('[type="submit"]'))
+            self.page.get_by_role("button", name=config.PageElements.LOG_IN_BTN_TEXT)
+            .and_(self.page.locator(config.PageElements.LOG_IN_BUTTON_LOCATOR))
+            .and_(self.page.locator(config.PageElements.SIGN_UP_BUTTON))
         )
         self.check_element(sign_in_button)
         sign_in_button.click()
