@@ -66,3 +66,4 @@ class PageElements:
     EXISTING_EMAIL_NOTIFICATION = "Этот email уже зарегистрирован"
     LOG_IN_BUTTON_LOCATOR = ".btn-primary"
     CARD = ".card"
+    LOG_IN_BTN_TEXT = "Войти"

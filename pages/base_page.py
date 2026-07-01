@@ -1,7 +1,4 @@
-from faker import Faker
 from playwright.sync_api import Page, expect
-
-fake = Faker()
 
 
 class BasePage:
@@ -20,11 +17,3 @@ class BasePage:
     def check_element(self, element):
         expect(element).to_be_visible()
         expect(element).to_be_enabled()
-
-    @staticmethod
-    def email_generator():
-        return f"{fake.user_name()}@gmail.com"
-
-    @staticmethod
-    def password_generator():
-        return fake.password()

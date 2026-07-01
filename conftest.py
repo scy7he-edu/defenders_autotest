@@ -12,12 +12,17 @@ def browser_context_args(browser_context_args):
 def attach_failure_screenshot(request, page: Page):
     yield
 
-    if request.node.rep_call.failed:
-        screenshot = page.screenshot(full_page=True)
+    rep_setup = getattr(request.node, "rep_setup", None)
+    rep_call = getattr(request.node, "rep_call", None)
 
+    failed_on_setup = rep_setup and rep_setup.failed
+    failed_on_call = rep_call and rep_call.failed
+
+    if failed_on_setup or failed_on_call:
+        screenshot = page.screenshot(full_page=True)
         allure.attach(
             screenshot,
-            name="Test down screenshot",
+            name="failed setup/call screenshot",
             attachment_type=allure.attachment_type.PNG,
         )
 

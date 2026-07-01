@@ -9,13 +9,9 @@ class SignUpPage(BasePage):
     def open_page(self):
         self.open_url(f"{config.PageElements.URL}/register")
 
-    @allure.step("Заполнение поля e-mail. Первичная регистрация")
-    def fill_email(self):
-        self.fill_field(config.PageElements.EMAIL_FIELD, BasePage.email_generator())
-
-    @allure.step("Заполнение поля e-mail. Регистрация уже выполнена.")
-    def fill_email_exists(self):
-        self.fill_field(config.PageElements.EMAIL_FIELD, config.UserCredentials.EMAIL)
+    @allure.step("Заполнение поля e-mail значением: {email}")
+    def fill_email(self, email: str):
+        self.fill_field(config.PageElements.EMAIL_FIELD, email)
 
     @allure.step("Завершение регистрации")
     def sign_up_proceed(self):
@@ -25,9 +21,9 @@ class SignUpPage(BasePage):
 
     @allure.step("Проверка успешной регистрации")
     def check_sign_up_succeed(self):
-        sign_in_button = self.page.get_by_role("link", name="Войти").and_(
-            self.page.locator(config.PageElements.LOG_IN_BUTTON_LOCATOR)
-        )
+        sign_in_button = self.page.get_by_role(
+            "link", name=config.PageElements.LOG_IN_BTN_TEXT
+        ).and_(self.page.locator(config.PageElements.LOG_IN_BUTTON_LOCATOR))
         self.check_element(sign_in_button)
 
     @allure.step("Проверка уведомления о существовании аккаунта с указанным email")
