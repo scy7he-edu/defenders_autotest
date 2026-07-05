@@ -2,7 +2,7 @@ import re
 import allure
 from playwright.sync_api import Page, expect
 
-from pages.sign_in_page import SignInPage
+from src.pages.sign_in_page import SignInPage
 
 
 @allure.feature("Авторизация")

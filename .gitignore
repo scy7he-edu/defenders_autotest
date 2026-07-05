@@ -6,3 +6,5 @@
 /.pytest_cache
 /utils/__pycache__
 /.venv
+/src/pages/__pycache__
+/src/utils/__pycache__
