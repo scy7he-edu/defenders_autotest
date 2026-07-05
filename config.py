@@ -43,6 +43,7 @@ class PageElements:
     LOG_IN_BUTTON_LOCATOR: str = ".btn-primary"
     CARD: str = ".card"
     LOG_IN_BTN_TEXT: str = "Войти"
+    WRONG_CREDENTIALS_NOTIFICATION: str = "Неверный email или пароль"
 
 
 PageElements = PageElements()

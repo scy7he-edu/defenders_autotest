@@ -2,7 +2,6 @@ import allure
 from playwright.sync_api import Page
 import pytest
 
-from config import UserCredentials
 from src.pages.sign_up_page import SignUpPage
 from src.utils.data_generators import DataGenerator
 
@@ -23,8 +22,15 @@ def test_sign_up(page: Page):
 @pytest.mark.negative
 def test_sign_up_existing_email(page: Page):
     sign_up_page = SignUpPage(page)
-    sign_up_page.open_page()
+    email = DataGenerator.generate_email()
 
-    sign_up_page.fill_email(UserCredentials.EMAIL)
+    sign_up_page.open_page()
+    sign_up_page.fill_email(email)
     sign_up_page.sign_up_proceed()
+    sign_up_page.check_sign_up_succeed()
+
+    sign_up_page.open_page()
+    sign_up_page.fill_email(email)
+    sign_up_page.sign_up_proceed()
+
     sign_up_page.check_existing_email_notification()

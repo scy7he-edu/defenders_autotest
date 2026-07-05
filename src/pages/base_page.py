@@ -6,7 +6,7 @@ class BasePage:
         self.page = page
 
     def open_url(self, url: str):
-        self.page.goto(url, wait_until="networkidle")
+        self.page.goto(url, wait_until="domcontentloaded")
 
     def fill_field(self, selector: str, value: str):
         locator = self.page.locator(selector)
